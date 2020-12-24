@@ -1,4 +1,5 @@
 const topContainer = (() => {
+    
     const addButtonElem = document.querySelector('.addBookBtn');
     
     addButtonElem.addEventListener('click',(e)=>{
@@ -7,11 +8,12 @@ const topContainer = (() => {
    
     return{
         addButtonElem,
-    }
+    };
 
 })();
 
 const topFormContainer = (() =>{
+   
     const formContainer = document.querySelector('.formContainer');
     
     const formDisplay = (e) =>{
@@ -30,26 +32,36 @@ const topFormContainer = (() =>{
 
     submitBtn.addEventListener('click', (e)=>{
         e.preventDefault();
-        addToLibrary.test(e);
-        
+        addToLibrary.test();
+        topFormContainer.formContainerReset();
     });
+
+    const formContainerReset = () =>{
+        document.querySelector('.title').value = '';
+        document.querySelector('.author').value = '';
+        document.querySelector('.pages').value = '';
+    };
 
     return{
         formContainer,
         formDisplay,
         submitBtn,
-    }
+        formContainerReset,
+    };
 
 })();
 
 const addToLibrary = (() =>{
 
-    const test = (e) =>{
-        console.log(e.target);
-    }
-
+    const test = () =>{
+        const titleBook = document.querySelector('.title').value;
+        const authorBook = document.querySelector('.author').value;
+        const pageOfBook = document.querySelector('.pages').value;
+        console.log(titleBook.toString(), authorBook.toString(), pageOfBook.toString());
+    };
     
     return{
         test,
-    }
+    };
+
 })();
