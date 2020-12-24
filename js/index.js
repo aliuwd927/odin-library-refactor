@@ -64,7 +64,7 @@ const bookInfo = (() =>{
     return{
         test,
     };
-    
+
 })();
 
 const addToLibrary = (() =>{
