@@ -32,7 +32,7 @@ const topFormContainer = (() =>{
 
     submitBtn.addEventListener('click', (e)=>{
         e.preventDefault();
-        addToLibrary.test();
+        bookInfo.test();
         topFormContainer.formContainerReset();
     });
 
@@ -51,9 +51,10 @@ const topFormContainer = (() =>{
 
 })();
 
-const addToLibrary = (() =>{
+const bookInfo = (() =>{
 
     const test = () =>{
+
         const titleBook = document.querySelector('.title').value;
         const authorBook = document.querySelector('.author').value;
         const pageOfBook = document.querySelector('.pages').value;
@@ -63,5 +64,10 @@ const addToLibrary = (() =>{
     return{
         test,
     };
+    
+})();
+
+const addToLibrary = (() =>{
+
 
 })();
