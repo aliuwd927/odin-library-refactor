@@ -95,27 +95,17 @@ const renderToDom = (() =>{
             addToLibrary.listOfBooks.forEach((books) =>{
                 booksAdded.innerHTML = `${books.title}<br>
                                         ${books.author}<br>
-                                        ${books.page}`;
+                                        ${books.page}<br>
+                                        <button class='btnRead'>Read</button>`;
             bottomContainer.appendChild(booksAdded);
             });
-
-            const booksAddedBtm = document.querySelector('.booksAdded');
-
-    const displayBottomBorder = (() =>{
-        let bookBtmBorder = document.createElement('div');
-            bookBtmBorder.classList.add('booksBtmBorder');
-            addToLibrary.listOfBooks.forEach((books) =>{
-                bookBtmBorder.innerHTML = `<button>Read</button>`;
-                booksAddedBtm.appendChild(bookBtmBorder);
-            });
-    })();
-
     };
+
+
 
     return{
         bottomContainer,
         displayToDom,
-        //displayBottomBorder,
     };
 
 })();
