@@ -87,37 +87,68 @@ const addToLibrary = (() =>{
 
 const renderToDom = (() =>{
 
-    const bottomContainer = document.querySelector('.bottomContainer');
-    
     const displayToDom = () => {
-        let booksAdded = document.createElement('div');
-            booksAdded.classList.add('booksAdded');
-            addToLibrary.listOfBooks.forEach((books) =>{
-                booksAdded.innerHTML = `${books.title}<br>
-                                        ${books.author}<br>
-                                        ${books.page}<br>
-                                        <div class='btnBorder'>
-                                        <button class='btnRead'>Read</button>
-                                        <button class='btnRead'>Not Red</button>
-                                        <p>Status: <span>Just Added</span> </p>
-                                        </div>`;
-            bottomContainer.appendChild(booksAdded);
-
-            booksAdded.addEventListener('click',(e)=>{
-                console.log(e.target);
-            });
-
-
-            });
+        createBook.renderItems(addToLibrary.listOfBooks);
     };
 
-
-
     return{
-        bottomContainer,
         displayToDom,
     };
 
 })();
 
 //Have displayToDom trigger a new fuctino to create the book with createElement.
+const createBook = (() =>{
+
+    const renderItems = (renderBkItems) => {
+
+        const btmContainer = document.querySelector('.bottomContainer');
+
+        //create container div for book <div class='bookContainer'></div>
+        const bookContainerDiv = document.createElement('div');
+
+        //everything below is within the bookContainer div
+        const titleDiv = document.createElement('div');
+        const authorDiv = document.createElement('div');
+        const pageDiv = document.createElement('div');
+        const readBtn = document.createElement('button');
+        const notReadBtn = document.createElement('button');
+        const removeBtn = document.createElement('button');
+
+        //adding css
+        bookContainerDiv.classList.add('booksAdded');
+        titleDiv.classList.add('tiles');
+        authorDiv.classList.add('authors');
+        pageDiv.classList.add('pages');
+        readBtn.classList.add('btnRead');
+        notReadBtn.classList.add('notReadBtn');
+        removeBtn.classList.add('removeBtn');
+
+        //render text elements.
+        renderBkItems.forEach((books) =>{
+        titleDiv.textContent = `${books.title}`;
+        authorDiv.textContent = `${books.author}`;
+        pageDiv.textContent = `${books.page}`;
+        readBtn.textContent = `Read`;
+        notReadBtn.textContent = `Not Read`;
+        removeBtn.textContent = `Remove`;
+        });
+        
+
+        //appending child to the bookContainer
+        bookContainerDiv.appendChild(titleDiv);
+        bookContainerDiv.appendChild(authorDiv);
+        bookContainerDiv.appendChild(pageDiv);
+        bookContainerDiv.appendChild(readBtn);
+        bookContainerDiv.appendChild(notReadBtn);
+        bookContainerDiv.appendChild(removeBtn);
+
+        //append bookContainer and everything within the the parent
+        btmContainer.appendChild(bookContainerDiv);
+
+        }
+    
+    return{
+        renderItems
+    };
+})();
