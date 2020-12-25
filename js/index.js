@@ -16,8 +16,7 @@ const topFormContainer = (() =>{
     const formContainer = document.querySelector('.formContainer');
     
     const formDisplay = (e) =>{
-        //console.log(e.srcElement.nextElementSibling);
-        //console.log('formDisplay Triggered');
+ 
         let elemSibling = e.srcElement.nextElementSibling;
         
         if(elemSibling === formContainer){
