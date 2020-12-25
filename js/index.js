@@ -133,7 +133,6 @@ const createBook = (() =>{
         removeBtn.textContent = `Remove`;
         });
         
-
         //appending child to the bookContainer
         bookContainerDiv.appendChild(titleDiv);
         bookContainerDiv.appendChild(authorDiv);
