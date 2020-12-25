@@ -57,7 +57,19 @@ body{
     border-color: black;
 }
 
+.btnBorder{
+    width: 100%;
+    height: 40%;
+    /*
+    border-style: solid;
+    border-color: blue;
+    */
+}
 .btnRead{
     width: 32%;
-    height: 25%;
+    height: 35%;
+    /*
+    border-style: solid;
+    border-color: red;
+    */
 }

@@ -96,8 +96,18 @@ const renderToDom = (() =>{
                 booksAdded.innerHTML = `${books.title}<br>
                                         ${books.author}<br>
                                         ${books.page}<br>
-                                        <button class='btnRead'>Read</button>`;
+                                        <div class='btnBorder'>
+                                        <button class='btnRead'>Read</button>
+                                        <button class='btnRead'>Not Red</button>
+                                        <p>Status: <span>Just Added</span> </p>
+                                        </div>`;
             bottomContainer.appendChild(booksAdded);
+
+            booksAdded.addEventListener('click',(e)=>{
+                console.log(e.target);
+            });
+
+
             });
     };
 
@@ -109,3 +119,5 @@ const renderToDom = (() =>{
     };
 
 })();
+
+//Have displayToDom trigger a new fuctino to create the book with createElement.
