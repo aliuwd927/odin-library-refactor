@@ -9,7 +9,6 @@ const topContainer = (() => {
     return{
         addButtonElem,
     };
-
 })();
 
 const topFormContainer = (() =>{
@@ -32,8 +31,9 @@ const topFormContainer = (() =>{
 
     submitBtn.addEventListener('click', (e)=>{
         e.preventDefault();
-        bookInfo.test();
+        bookInfo.bookInfoValue();
         topFormContainer.formContainerReset();
+        renderToDom.displayToDom();
     });
 
     const formContainerReset = () =>{
@@ -48,26 +48,61 @@ const topFormContainer = (() =>{
         submitBtn,
         formContainerReset,
     };
-
 })();
 
 const bookInfo = (() =>{
 
-    const test = () =>{
+    const bookInfoValue = () =>{
 
         const titleBook = document.querySelector('.title').value;
         const authorBook = document.querySelector('.author').value;
         const pageOfBook = document.querySelector('.pages').value;
-        console.log(titleBook.toString(), authorBook.toString(), pageOfBook.toString());
+
+        addToLibrary.listOfBooks.push(new AddToList(titleBook,authorBook,pageOfBook));
+
     };
     
     return{
-        test,
+        bookInfoValue,
+        
     };
 
 })();
 
+function AddToList (title,author,page) {
+    this.title = title;
+    this.author = author;
+    this.page = page;
+}
+
 const addToLibrary = (() =>{
 
+    const listOfBooks = [];
+
+    return{
+        listOfBooks,
+    }
+
+})();
+
+const renderToDom = (() =>{
+
+    const bottomContainer = document.querySelector('.bottomContainer');
+
+    const displayToDom = () => {
+        let booksAdded = document.createElement('div');
+            booksAdded.classList.add('booksAdded');
+            addToLibrary.listOfBooks.forEach((books) =>{
+                booksAdded.innerHTML = `${books.title}<br>
+                                        ${books.author}<br>
+                                        ${books.page}`;
+            bottomContainer.appendChild(booksAdded);
+            });
+    };
+
+    return{
+        bottomContainer,
+        displayToDom
+    };
 
 })();
