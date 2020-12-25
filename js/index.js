@@ -7,7 +7,7 @@ const topContainer = (() => {
     });
    
     return{
-        addButtonElem,
+        addButtonElem
     };
 })();
 
@@ -46,7 +46,7 @@ const topFormContainer = (() =>{
         formContainer,
         formDisplay,
         submitBtn,
-        formContainerReset,
+        formContainerReset
     };
 })();
 
@@ -63,8 +63,7 @@ const bookInfo = (() =>{
     };
     
     return{
-        bookInfoValue,
-        
+        bookInfoValue
     };
 
 })();
@@ -92,7 +91,7 @@ const renderToDom = (() =>{
     };
 
     return{
-        displayToDom,
+        displayToDom
     };
 
 })();
