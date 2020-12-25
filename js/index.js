@@ -33,6 +33,7 @@ const topFormContainer = (() =>{
         bookInfo.bookInfoValue();
         topFormContainer.formContainerReset();
         renderToDom.displayToDom();
+        //renderToDom.displayBottomBorder();
     });
 
     const formContainerReset = () =>{
@@ -87,7 +88,7 @@ const addToLibrary = (() =>{
 const renderToDom = (() =>{
 
     const bottomContainer = document.querySelector('.bottomContainer');
-
+    
     const displayToDom = () => {
         let booksAdded = document.createElement('div');
             booksAdded.classList.add('booksAdded');
@@ -97,11 +98,24 @@ const renderToDom = (() =>{
                                         ${books.page}`;
             bottomContainer.appendChild(booksAdded);
             });
+
+            const booksAddedBtm = document.querySelector('.booksAdded');
+
+    const displayBottomBorder = (() =>{
+        let bookBtmBorder = document.createElement('div');
+            bookBtmBorder.classList.add('booksBtmBorder');
+            addToLibrary.listOfBooks.forEach((books) =>{
+                bookBtmBorder.innerHTML = `<button>Read</button>`;
+                booksAddedBtm.appendChild(bookBtmBorder);
+            });
+    })();
+
     };
 
     return{
         bottomContainer,
-        displayToDom
+        displayToDom,
+        //displayBottomBorder,
     };
 
 })();

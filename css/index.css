@@ -49,10 +49,15 @@ body{
 }
 
 .booksAdded{
-    width: 25%;
-    height: 10%;
+    width: 10%;
+    height: 30%;
     display: flex;
     flex-direction: row;
     border-style: solid;
     border-color: black;
+}
+
+.bottomBtmBorder{
+    border-style:solid;
+    border-color: red;
 }
