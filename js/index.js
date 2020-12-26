@@ -180,11 +180,13 @@ const createBook = (() =>{
 const updateStatus = (()=>{
 
     const updateRead = () =>{
-        console.log('updateRead');
+        const status = document.querySelector('.status');
+        status.textContent =`Status: Read`;
     };
 
     const updateNotRead = () =>{
-        console.log('updateNotRead');
+        const status = document.querySelector('.status');
+        status.textContent =`Status: Not Read`;
     };
 
     const updateRemove = () =>{
