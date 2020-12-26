@@ -166,7 +166,7 @@ const createBook = (() =>{
             updateStatus.updateNotRead();
         });
 
-        removeBtn.addEventListener('click',(e)=>{
+        removeBtn.addEventListener('click',()=>{
             updateStatus.updateRemove();
         })
     };
@@ -188,7 +188,8 @@ const updateStatus = (()=>{
     };
 
     const updateRemove = () =>{
-        console.log('updateRemove');
+        addToLibrary.listOfBooks.splice(addToLibrary.listOfBooks.indexOf(addToLibrary.listOfBooks),1);
+        renderToDom.displayToDom();
     };
 
     return{
