@@ -33,7 +33,6 @@ const topFormContainer = (() =>{
         bookInfo.bookInfoValue();
         topFormContainer.formContainerReset();
         renderToDom.displayToDom();
-        //renderToDom.displayBottomBorder();
     });
 
     const formContainerReset = () =>{
@@ -87,16 +86,28 @@ const addToLibrary = (() =>{
 const renderToDom = (() =>{
 
     const displayToDom = () => {
-        createBook.renderItems(addToLibrary.listOfBooks);
-    };
+        removeChild();
+        for(let i = 0; i < addToLibrary.listOfBooks.length; i++){
+            createBook.renderItems(addToLibrary.listOfBooks[i]);
+        };
+      };
+
+      const removeChild = () => {
+        const btmContainer = document.querySelector('.bottomContainer');
+        while(btmContainer.firstChild) {
+          btmContainer.removeChild(btmContainer.firstChild);
+
+        };
+      }
 
     return{
-        displayToDom
+        displayToDom,
+        removeChild,
     };
 
 })();
 
-//Have displayToDom trigger a new fuctino to create the book with createElement.
+//Have displayToDom trigger a new function to create the books with createElement.
 const createBook = (() =>{
 
     const renderItems = (renderBkItems) => {
@@ -113,6 +124,7 @@ const createBook = (() =>{
         const readBtn = document.createElement('button');
         const notReadBtn = document.createElement('button');
         const removeBtn = document.createElement('button');
+        const status = document.createElement('div')
 
         //adding css
         bookContainerDiv.classList.add('booksAdded');
@@ -122,16 +134,16 @@ const createBook = (() =>{
         readBtn.classList.add('btnRead');
         notReadBtn.classList.add('notReadBtn');
         removeBtn.classList.add('removeBtn');
+        status.classList.add('status');
 
         //render text elements.
-        renderBkItems.forEach((books) =>{
-        titleDiv.textContent = `${books.title}`;
-        authorDiv.textContent = `${books.author}`;
-        pageDiv.textContent = `${books.page}`;
+        titleDiv.textContent = `Title : ${renderBkItems.title}`;
+        authorDiv.textContent = `Author : ${renderBkItems.author}`;
+        pageDiv.textContent = `Pages : ${renderBkItems.page}`;
         readBtn.textContent = `Read`;
         notReadBtn.textContent = `Not Read`;
         removeBtn.textContent = `Remove`;
-        });
+        status.textContent = `Status: Just Added`;
         
         //appending child to the bookContainer
         bookContainerDiv.appendChild(titleDiv);
@@ -140,13 +152,49 @@ const createBook = (() =>{
         bookContainerDiv.appendChild(readBtn);
         bookContainerDiv.appendChild(notReadBtn);
         bookContainerDiv.appendChild(removeBtn);
+        bookContainerDiv.appendChild(status);
 
         //append bookContainer and everything within the the parent
         btmContainer.appendChild(bookContainerDiv);
 
-        }
-    
-    return{
-        renderItems
+        //btn event listeners
+        readBtn.addEventListener('click', (e)=>{
+            updateStatus.updateRead();
+        });
+
+        notReadBtn.addEventListener('click', (e)=>{
+            updateStatus.updateNotRead();
+        });
+
+        removeBtn.addEventListener('click',(e)=>{
+            updateStatus.updateRemove();
+        })
     };
+
+       
+    return{
+        renderItems,
+    };
+})();
+
+const updateStatus = (()=>{
+
+    const updateRead = () =>{
+        console.log('updateRead');
+    };
+
+    const updateNotRead = () =>{
+        console.log('updateNotRead');
+    };
+
+    const updateRemove = () =>{
+        console.log('updateRemove');
+    };
+
+    return{
+        updateRead,
+        updateNotRead,
+        updateRemove
+    };
+
 })();
