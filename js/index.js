@@ -66,12 +66,21 @@ const bookInfo = (() =>{
     };
 
 })();
-
+/*
 function AddToList (title,author,page) {
     this.title = title;
     this.author = author;
     this.page = page;
 }
+*/
+
+class AddToList{
+    constructor(title,author,page){
+        this.title = title;
+        this.author = author;
+        this.page = page;
+    };
+};
 
 const addToLibrary = (() =>{
 
@@ -159,15 +168,19 @@ const createBook = (() =>{
 
         //btn event listeners
         readBtn.addEventListener('click', (e)=>{
-            updateStatus.updateRead();
+            e.preventDefault();
+            status.textContent =`Status: Read`; 
         });
 
         notReadBtn.addEventListener('click', (e)=>{
-            updateStatus.updateNotRead();
+            e.preventDefault();
+            status.textContent =`Status: Not Read`;
         });
 
-        removeBtn.addEventListener('click',()=>{
-            updateStatus.updateRemove();
+        removeBtn.addEventListener('click',(e)=>{
+            e.preventDefault();
+            addToLibrary.listOfBooks.splice(addToLibrary.listOfBooks.indexOf(renderBkItems),1);
+            renderToDom.displayToDom();
         })
     };
 
@@ -175,29 +188,4 @@ const createBook = (() =>{
     return{
         renderItems,
     };
-})();
-
-const updateStatus = (()=>{
-
-    const updateRead = () =>{
-        const status = document.querySelector('.status');
-        status.textContent =`Status: Read`;
-    };
-
-    const updateNotRead = () =>{
-        const status = document.querySelector('.status');
-        status.textContent =`Status: Not Read`;
-    };
-
-    const updateRemove = () =>{
-        addToLibrary.listOfBooks.splice(addToLibrary.listOfBooks.indexOf(addToLibrary.listOfBooks),1);
-        renderToDom.displayToDom();
-    };
-
-    return{
-        updateRead,
-        updateNotRead,
-        updateRemove
-    };
-
 })();
