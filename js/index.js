@@ -107,7 +107,7 @@ const renderToDom = (() =>{
           btmContainer.removeChild(btmContainer.firstChild);
 
         };
-      }
+      };
 
     return{
         displayToDom,
