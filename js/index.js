@@ -184,7 +184,6 @@ const createBook = (() =>{
         })
     };
 
-       
     return{
         renderItems,
     };
